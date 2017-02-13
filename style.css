@@ -1,0 +1,44 @@
+/*
+ Theme Name:   UKRSE
+ Description:  A child theme of the Masonic WordPress theme
+ Author:       Mark Turner
+ Author URI:   http://www.ncl.ac.uk/computing/people/profile/markturner.html#background
+ Template:     masonic
+ Version:      1.0.0
+*/
+
+.entry-author
+{
+ 	display:none;
+}
+.angled-background {
+     background: none;
+
+}
+
+.site-header-text {
+    bottom: 250px;
+    position: relative;
+}
+
+.logo-img-holder img {
+    width: 165px;
+    height: 210px;
+}
+
+.minitweets {
+    float:none;
+    padding: 5px;
+}
+
+.minitweets-end {
+    display: none;
+}
+
+.primary h2 {
+    margin: 25px 0 10px;
+}
+
+.job-title {
+margin-bottom: 20px;
+}
