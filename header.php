@@ -1,12 +1,6 @@
 <?php
-/**
-* Theme Header Section for our theme.
-*
-* Displays all of the <head> section and everything up till </header>
-*
-* @package ThemeGrill
-* @subpackage Masonic
-* @since 1.0
+/*
+Template Name: Full Width
 */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
