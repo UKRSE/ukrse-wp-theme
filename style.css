@@ -1,8 +1,8 @@
 /*
- Theme Name:   UKRSE
+ Theme Name:   UKRSE Conf 2017
  Description:  A child theme of the Masonic WordPress theme
- Author:       Mark Turner
- Author URI:   http://www.ncl.ac.uk/computing/people/profile/markturner.html#background
+ Author:       Stephen Dowsland & Mark Turner
+ Author URI:   http://www.ncl.ac.uk/computing/people/profile/stephendowsland.html#background
  Template:     masonic
  Version:      1.0.0
 */
@@ -41,4 +41,33 @@
 
 .job-title {
 margin-bottom: 20px;
+}
+
+/* Conference Styles*/
+body.page-id-46 article.page ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+body.page-id-46 article.page li {
+    padding: 60px 20px 20px;
+    margin-bottom: 20px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+body.page-id-46 article.page li:last-child {
+    border-bottom: none;
+}
+
+body.page-id-46 article.page li strong {
+    display: block;
+    padding: 10px;
+    color: #97316e;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    font-size: 1.2em;
 }
