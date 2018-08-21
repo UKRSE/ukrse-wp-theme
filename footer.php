@@ -57,6 +57,7 @@
 </div>
 
 <!--
+    Site id:
 <?php echo get_current_blog_id(); ?>
 -->
 
