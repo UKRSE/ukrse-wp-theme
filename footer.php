@@ -139,6 +139,7 @@ jQuery(document).ready(function(){
         }
     currentId = e.target.href.split("#")[1];
     $modalTitle.text(jQuery(e.target).text())
+    $modalContent.html(abstracts[currentId].abstract)
     showModal();
   })
   
