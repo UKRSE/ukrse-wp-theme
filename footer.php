@@ -45,6 +45,9 @@
 </footer>
 
 <?php wp_footer(); ?>
+
+<?php if (get_current_blog_id() == 3):?>
+
 <div class="content-modal">
     <div class="content-modal-inner">
         <h2></h2>
@@ -55,10 +58,13 @@
         <i class="fa fa-times" aria-hidden="true"></i>
     </div>
 </div>
+<div class="modal-bg"></div>
 
-<!--
-<?php echo get_current_blog_id(); ?>
--->
+<script>
+
+</script>
+
+<?php endif; ?>
 
 </body>
 </html>
