@@ -45,6 +45,20 @@
 </footer>
 
 <?php wp_footer(); ?>
+<div class="content-modal">
+    <div class="content-modal-inner">
+        <h2></h2>
+        <h3></h3>
+        <div class="text-content"></div>
+    </div>
+    <div class="content-modal-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+</div>
+
+<!--
+<?php echo get_current_blog_id(); ?>
+-->
 
 </body>
 </html>
