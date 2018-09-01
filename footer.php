@@ -161,8 +161,8 @@ $talkLinks.add($workshopLinks).on("click", function (e) {
   } else {
     $modalTitle.text(jQuery(e.target).text())
     $modalContent.html("")
-    $modalContent.html(abstracts[currentId].abstract)
     showModal();
+    $modalContent.html(abstracts[currentId].abstract)
   }
   
 })
