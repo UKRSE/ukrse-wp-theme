@@ -62,87 +62,101 @@
 <script>
 
 
-jQuery(document).ready(function(){
-  
-  var contentLoaded = false;
-  var abstracts = {};
-  var currentId = null;
-  
-  
-  function loadContent() {
-    jQuery.get("https://rse.ac.uk/conf2018/talk-abstracts/").then(function(data){
-  var page = jQuery(data);
-  var article = page.find("article.type-page")
-  var talks = article.find("details")
-  
-  talks.each(function(index, talk){
-  
-  var talkData = {
-    "title": "",
-    "author": "",
-    "affiliation": "",
-    "abstract": "",
-    "image": {}
-  }
-  
-  talkData.title = jQuery(talk).find("summary strong").text().trim()
-  talkData.slug = talkData.title.replace(/\W+/g, '-').toLowerCase()
-  
-  talkData.author = jQuery(talk).find("summary em").html().trim()
-  talkData.image = jQuery(talk).find("img").length > 0 ? {"src": jQuery(talk).find("img")[0].src, "content": jQuery(talk).find("img")[0].outerHTML} : null
-  talkData.affiliation = jQuery(talk).find("summary > em").length > 1 ? jQuery(talk).find("summary em").eq(1).html().trim() : "";
-  talkData.abstract = jQuery(talk).find("blockquote").html()
-  
-//   talksData.push(talkData)
-    abstracts[talkData.slug] = talkData
-  
-  
-})
-      
-      if (currentId) {
-    $modalContent.html(abstracts[currentId].abstract)
-  }
-      
-      contentLoaded = true;
-  
-  
-})
-  }
-  
-  $modalBg = jQuery(".modal-bg");
-  $modal = jQuery(".content-modal");
-  
-  $modal.find(".content-modal-close").add($modalBg).on("click", function(){
-    hideModal()
-   })
-  
-  $modalTitle = $modal.find(".content-modal-inner h2")
-  $modalAuthors = $modal.find(".content-modal-inner h3")
-  $modalContent = $modal.find(".content-modal-inner .text-content")
-  
-  hideModal = function () {
-    $modal.hide()
-    $modalBg.hide()
-  }
-  
-  showModal = function () {
-    $modal.show()
-    $modalBg.show()
-  }
-  
-  $talkLinks = jQuery("[href^='/conf2018/talk-abstracts']");
-  
-  $talkLinks.on("click", function(e){
-    e.preventDefault();
-    if (contentLoaded !== true) {
-        loadContent();
+jQuery(document).ready(function () {
+
+var contentLoaded = false;
+var abstracts = {};
+var currentId = null;
+
+
+function loadContent() {
+
+  // Call talk and workshop abstract pages
+
+  jQuery.when(jQuery.get("https://rse.ac.uk/conf2018/talk-abstracts/"), jQuery.get("https://rse.ac.uk/conf2018/workshop-abstracts/")).done(function (t, w) {
+
+    data = [t[0], w[0]]
+
+    data.forEach(function (d) {
+      var page = jQuery(d);
+      var article = page.find("article.type-page")
+      var talks = article.find("details")
+
+
+      talks.each(function (index, talk) {
+
+        var talkData = {
+          "title": "",
+          "author": "",
+          "affiliation": "",
+          "abstract": "",
+          "image": {}
         }
-    currentId = e.target.href.split("#")[1];
-    $modalTitle.text(jQuery(e.target).text())
-    $modalContent.html(abstracts[currentId].abstract)
-    showModal();
+
+        talkData.title = jQuery(talk).find("summary strong").text().trim()
+        talkData.slug = jQuery(talk).attr("id")
+
+        talkData.author = jQuery(talk).find("summary em").html().trim()
+        talkData.image = jQuery(talk).find("img").length > 0 ? {
+          "src": jQuery(talk).find("img")[0].src,
+          "content": jQuery(talk).find("img")[0].outerHTML
+        } : null
+        talkData.affiliation = jQuery(talk).find("summary > em").length > 1 ? jQuery(talk).find("summary em").eq(1).html().trim() : "";
+        talkData.abstract = jQuery(talk).find("blockquote").html()
+
+        abstracts[talkData.slug] = talkData
+
+
+      })
+    })
+
+    if (currentId) {
+      $modalContent.html(abstracts[currentId].abstract)
+      showModal();
+    }
+
+    contentLoaded = true;
+
+
   })
-  
+
+}
+
+$modalBg = jQuery(".modal-bg");
+$modal = jQuery(".content-modal");
+
+$modal.find(".content-modal-close").add($modalBg).on("click", function () {
+  hideModal()
+})
+
+$modalTitle = $modal.find(".content-modal-inner h2")
+$modalAuthors = $modal.find(".content-modal-inner h3")
+$modalContent = $modal.find(".content-modal-inner .text-content")
+
+hideModal = function () {
+  $modal.hide()
+  $modalBg.hide()
+}
+
+showModal = function () {
+  $modal.show()
+  $modalBg.show()
+}
+
+$talkLinks = jQuery("[href^='/conf2018/talk-abstracts']");
+$workshopLinks = jQuery("[href^='/conf2018/workshop-abstracts']");
+
+$talkLinks.add($workshopLinks).on("click", function (e) {
+  e.preventDefault();
+  if (contentLoaded !== true) {
+    loadContent();
+  }
+  currentId = e.target.href.split("#")[1];
+  $modalTitle.text(jQuery(e.target).text())
+  $modalContent.html(abstracts[currentId].abstract)
+  showModal();
+})
+
 })
 
 
