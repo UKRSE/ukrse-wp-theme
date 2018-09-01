@@ -129,6 +129,7 @@ $modal.find(".content-modal-close").add($modalBg).on("click", function () {
   hideModal()
 })
 
+$modalInner = $modal.find(".content-modal-inner")
 $modalTitle = $modal.find(".content-modal-inner h2")
 $modalAuthors = $modal.find(".content-modal-inner h3")
 $modalContent = $modal.find(".content-modal-inner .text-content")
@@ -143,6 +144,7 @@ showModal = function () {
   jQuery("html").addClass("abstract-modal-open");
   $modal.show()
   $modalBg.show()
+  $modalInner.scrollTop(0);
 }
 
 $talkLinks = jQuery("[href^='/conf2018/talk-abstracts']");
@@ -160,9 +162,8 @@ $talkLinks.add($workshopLinks).on("click", function (e) {
     loadContent();
   } else {
     $modalTitle.text(jQuery(e.target).text())
-    $modalContent.html("")
-    showModal();
     $modalContent.html(abstracts[currentId].abstract)
+    showModal();
   }
   
 })
