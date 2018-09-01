@@ -134,11 +134,13 @@ $modalAuthors = $modal.find(".content-modal-inner h3")
 $modalContent = $modal.find(".content-modal-inner .text-content")
 
 hideModal = function () {
+  jQuery("body").removeClass("abstract-modal-open");
   $modal.hide()
   $modalBg.hide()
 }
 
 showModal = function () {
+  jQuery("body").addClass("abstract-modal-open");
   $modal.show()
   $modalBg.show()
 }
