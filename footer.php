@@ -149,10 +149,10 @@ $workshopLinks = jQuery("[href^='/conf2018/workshop-abstracts']");
 $talkLinks.add($workshopLinks).on("click", function (e) {
   e.preventDefault();
   if (contentLoaded !== true) {
-    loadContent();
     $modalTitle.text("Loading...")
     $modalContent.html("")
     showModal();
+    loadContent();
   } else {
     currentId = e.target.href.split("#")[1];
     $modalTitle.text(jQuery(e.target).text())
