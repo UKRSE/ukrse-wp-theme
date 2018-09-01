@@ -152,12 +152,12 @@ $talkLinks.add($workshopLinks).on("click", function (e) {
   currentId = e.target.href.split("#")[1];
 
   if (contentLoaded !== true) {
-    $modalTitle.text("Loading...")
-    $modalContent.html("")
+    $modalTitle.text(jQuery(e.target).text())
+    $modalContent.html("Loading...")
     showModal();
     loadContent();
   } else {
-    $modalTitle.text(jQuery(e.target).text())
+    
     $modalContent.html(abstracts[currentId].abstract)
     showModal();
   }
