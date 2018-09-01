@@ -150,11 +150,16 @@ $talkLinks.add($workshopLinks).on("click", function (e) {
   e.preventDefault();
   if (contentLoaded !== true) {
     loadContent();
+    $modalTitle.text("Loading...")
+    $modalContent.html("")
+    showModal();
+  } else {
+    currentId = e.target.href.split("#")[1];
+    $modalTitle.text(jQuery(e.target).text())
+    $modalContent.html(abstracts[currentId].abstract)
+    showModal();
   }
-  currentId = e.target.href.split("#")[1];
-  $modalTitle.text(jQuery(e.target).text())
-  $modalContent.html(abstracts[currentId].abstract)
-  showModal();
+  
 })
 
 })
