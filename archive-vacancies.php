@@ -21,7 +21,7 @@ function custom_title( $title ) {
                     <p>However, where we are made aware of great opportunities for research software engineers, we advertise these here where we can.</p>
                     <p>If you are applying for a job from this list, please do tell the recruiting institution that you saw it here if you have the opportunity to do so.</p>
 
-                    <?php $args = array( 'post_type' => 'vacancies', 'posts_per_page' => 50, 'order' => 'ASC', 'meta_key' => '_expiration-date', 'orderby' => 'meta_value' );
+                    <?php $args = array( 'post_type' => 'vacancies', 'posts_per_page' => 500, 'order' => 'ASC', 'meta_key' => '_expiration-date', 'orderby' => 'meta_value' );
                     $eventloop = new WP_Query( $args );
                     if ( $eventloop->have_posts() ) : while ( $eventloop->have_posts() ) : $eventloop->the_post();
 
