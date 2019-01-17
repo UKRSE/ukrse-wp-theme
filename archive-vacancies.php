@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php 
+
+get_header();
+
+add_filter( 'wp_title', 'custom_title', 20 );
+
+function custom_title( $title ) {
+    return str_replace('Vacancies Archive - Research Software Engineers Association', 'Vacancies - Research Software Engineers Association', $title); 
+}
+
+?>
 
 <div class="site-content">
     <div id="container" class="wrapper clear">
