@@ -20,7 +20,7 @@ function custom_title( $title ) {
                     <p>There are regular opportunities for programming researchers in universities and labs across the UK. A great place to look is Jobs.ac.uk.</p>
                     <p>However, where we are made aware of great opportunities for research software engineers, we advertise these here where we can.</p>
                     <p>If you are applying for a job from this list, please do tell the recruiting institution that you saw it here if you have the opportunity to do so.</p>
-
+                    <p>If you’d like your vacancy on this page, email <a href="mailto:info@rse.ac.uk">info@rse.ac.uk</a></p>
                     <?php $args = array( 'post_type' => 'vacancies', 'posts_per_page' => 500, 'order' => 'ASC', 'meta_key' => '_expiration-date', 'orderby' => 'meta_value' );
                     $eventloop = new WP_Query( $args );
                     if ( $eventloop->have_posts() ) : while ( $eventloop->have_posts() ) : $eventloop->the_post();
