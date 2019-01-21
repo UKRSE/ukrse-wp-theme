@@ -1,12 +1,13 @@
 <?php 
 
-get_header();
-
-add_filter( 'wp_title', 'custom_title', 20 );
-
-function custom_title( $title ) {
-    return str_replace('Vacancies Archive - Research Software Engineers Association', 'Vacancies - Research Software Engineers Association', $title); 
+function vacancies_title($title_parts) {
+    $title_parts['title'] = "Vacancies - Research Software Engineers Association";
+    return $title_parts;
 }
+
+add_filter( 'document_title_parts', 'vacancies_title' );
+
+get_header();
 
 ?>
 
