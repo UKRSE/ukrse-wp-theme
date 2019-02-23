@@ -30,6 +30,8 @@ get_header();
 
                     the_title(sprintf('<div class="job-title"><h3><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
 
+                    echo '<small><b>Published Date</b>&nbsp;&nbsp;' . get_the_time( 'F j, Y' ) . '&nbsp;&nbsp;&nbsp;&nbsp;</small>';
+                    
                     if($expdate < strtotime('1 year') ){
                         echo '<small><b>Closing Date</b>&nbsp;&nbsp;' . get_date_from_gmt( date( 'Y-m-d H:i:s', $expdate ), 'F j, Y' ) . '</small></div>';
 
